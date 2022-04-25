@@ -47,6 +47,8 @@ public class Ex4_Casting {
 		System.out.println(num5_1);
 		System.out.println(num5_2);
 		System.out.println(num5_3);
+		
+
 
 		
 		
