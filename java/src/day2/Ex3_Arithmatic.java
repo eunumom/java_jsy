@@ -12,6 +12,7 @@ public class Ex3_Arithmatic {
 		// 5 % 2 = 1
 		// 정수 연산자 실수 = 실수: 정수가 타입 변환 됨
 		// 실수 연산자 실수 = 실수
+		// 결과 값이 어떤 수로 나옴
 
 		System.out.println(5 + 2);
 		System.out.println(5 - 2);
