@@ -27,6 +27,7 @@ public class Ex16_Test4 {
 		
 		//선생님이 알려주신 정답
 		if (op == '+' ) {System.out.println(""+num1 + op + num2 + "=" + (num1 + num2));}
+		// 문자열을 더하면 다 문자열이 됨 때문에 맨 앞에 빈 문자열을 삽입함
 		else if (op == '-' ) {System.out.println(""+num1 + op + num2 + "=" + (num1 - num2));}
 		else if (op == '*' ) {System.out.println(""+num1 + op + num2 + "=" + (num1 * num2));}
 		else if (op == '/' ) {System.out.println(""+num1 + op + num2 + "=" + (num1 / (double)num2));}
