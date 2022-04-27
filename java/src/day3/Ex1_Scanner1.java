@@ -41,9 +41,10 @@ public class Ex1_Scanner1 {
 		System.out.print("정수를 입력하세요 : ");
 		int num = scan1.nextInt();
 		System.out.println("입력한 정수는 "+num+"입니다.");
-		*/
+		
 		
 		scan1.close();
+		*/
 
 		
 	}
