@@ -11,7 +11,7 @@ public class Ex14_For5_Divisor {
 		 *  	  => num를 i로 나누었을 때 나머지가 0과 같다면 i를 출력
 		 * */
 		int i;
-		int num = 12;
+		int num = 12; 
 		for(i=1; i<=num; i++) {
 				if(num % i == 0) {
 						System.out.print(i + " ");
