@@ -1,3 +1,4 @@
+package day4;
 
 public class Ex13_Continue1_For {
 
@@ -20,8 +21,8 @@ public class Ex13_Continue1_For {
 				i++;
 				continue;
 			}
-			System.out.println(i);
-			i++;
+			System.out.print(i);
+			i++; //이것의 역할은?
 		}
 		
 		
