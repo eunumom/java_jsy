@@ -14,6 +14,7 @@ public class Ex15_For6_GCD {
 		 * 반복문 종료 후 gcd를 출력
 		 */
 		
+
 		/* 같은 타입의 변수를 여러개 선언하는 경우 ,을 통해 한 줄로 선언할 수 있음
 		 * 타입 변수명1;
 		 * 타입 변수명2;
@@ -33,10 +34,20 @@ public class Ex15_For6_GCD {
 		int num1 = 12, num2 = 18, i, gcd = 0;
 		for (i=1; i<=18; i++) {
 				if(num1 % i == 0 && num2 % i == 0) {
-				}
 				gcd = i;
+				}				
 		}
 		System.out.println(gcd);
+		
+		
+		//아래는 선생님 정답
+		int num3 = 12, num4 = 18, gcd1 = 1;
+		for(int i1=1 ; i1 <= num3 ; i1++ ) {
+				if(num3 % i1 == 0 && num4 % i1 == 0) {
+				gcd1 = i1;
+			}
+		}
+		System.out.println(num3 + "과 " + num4 + "의 최대공약수는 " + gcd1 + "입니다." );
 		
 
 	}
