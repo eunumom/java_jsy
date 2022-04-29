@@ -1,6 +1,6 @@
 package day5;
 
-public class Ex2_Random {
+public class Ex02_Random {
 
 	public static void main(String[] args) {
 		/* 0<=Math.random()<1 실수범위

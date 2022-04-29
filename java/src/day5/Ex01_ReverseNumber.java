@@ -2,7 +2,7 @@ package day5;
 
 import java.util.Scanner;
 
-public class Ex1_ReverseNumber {
+public class Ex01_ReverseNumber {
 
 	public static void main(String[] args) {
 		/* 정수를 입력받아 그 정수를 역으로 출력하는 코드를 작성하시오.

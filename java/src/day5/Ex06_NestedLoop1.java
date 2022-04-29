@@ -1,6 +1,6 @@
 package day5;
 
-public class Ex6_NestedLoop1 {
+public class Ex06_NestedLoop1 {
 
 	public static void main(String[] args) {
 		/* *****

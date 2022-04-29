@@ -2,7 +2,7 @@ package day5;
 
 import java.util.Scanner;
 
-public class Ex3_UpDown {
+public class Ex03_UpDown {
 
 	public static void main(String[] args) {
 		/* 랜덤으로 생성된 수(1~100)를 맞추는 게임

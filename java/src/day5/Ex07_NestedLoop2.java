@@ -1,6 +1,6 @@
 package day5;
 
-public class Ex7_NestedLoop2 {
+public class Ex07_NestedLoop2 {
 
 	public static void main(String[] args) {
 		/* 아래와 같이 출력되도록 코드 작성

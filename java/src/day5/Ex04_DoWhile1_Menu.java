@@ -2,7 +2,7 @@ package day5;
 
 import java.util.Scanner;
 
-public class Ex4_DoWhile1_Menu {
+public class Ex04_DoWhile1_Menu {
 
 	public static void main(String[] args) {
 		/* 메뉴 출력 예제를 do while문으로 작성하시오
