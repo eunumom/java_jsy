@@ -14,15 +14,8 @@ public class Ex3_Method3_Sort {
 		System.out.print("5명의 성적을 입력하세요 : ");
 		int score[] = scoreArray(scan, 5);
 		
-		for(int i=0; i<score.length-1; i++) {
-			for(int j=0; j<score.length-1-i; j++) {
-				if (score[j]>score[j+1]) {
-					int tmp = score[j];
-					score[j] = score[j+1];
-					score[j+1] = tmp;
-				}
-			}
-		}
+		bubbleSort(score, true);
+		
 		printArray(score);
 		
 		scan.close();

@@ -7,7 +7,7 @@ public class Ex8_1_Method6_Array_Answer {
 		int n = 3;
 		int num = 11;
 		printArray(arr);
-		System.out.println(cotains(arr,num));
+		System.out.println(contains(arr,num));
 		System.out.println(contains(arr, 7, num));
 	}
 
@@ -32,7 +32,7 @@ public class Ex8_1_Method6_Array_Answer {
 	 * 리턴타입 : 해당 숫자가 있는지 없는지 => boolean
 	 * 메소드명 : contains
 	 * */
-	public static boolean cotains(int arr[], int num) {
+	public static boolean contains(int arr[], int num) {
 		if(arr == null || arr.length == 0) {
 			return false;
 		}
