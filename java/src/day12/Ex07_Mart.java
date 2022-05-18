@@ -17,6 +17,10 @@ public class Ex07_Mart {
 		int menu;
 		int subMenu, price, amount, capacity, count;
 		String name;
+		//장바구니 생성, 종류 max=30
+		Product basket[] = new Product [30];
+		int basketCount = 0;
+		
 		
 		Scanner scan = new Scanner(System.in);
 		do {
@@ -47,9 +51,56 @@ public class Ex07_Mart {
 				break;
 			case 3:
 				printProductList(list, listCount);
-				
+				/* 상품 선택
+				 * 수량 입력
+				 * 장바구니에 담기
+				 * 제고에서 수량만큼 빼기
+				 * 현재 장바구니에 담긴 목록 출력
+				 * */
+				Product selectProduct = selectProduct(scan, list, listCount);
+				if(selectProduct !=null) {
+					basket[basketCount] = selectProduct;
+					basketCount++;
+					printProductList(basket, basketCount);
+				}else {
+					System.out.println("선택된 제품이 없습니다.");
+				}
 				break;
 			case 4:
+				/* 장바구니 목록과 총 금액 출력
+				 * 결제 금액 입력
+				 * 결제 진행
+				 *   금액이 부족하면 결제 취소?
+				 *     취소하면 장바구니 비우기
+				 *     취소하지 않으면 장바구니 보관
+				 *   정상결제 후
+				 *     거스름돈 출력 후 장바구니 비움
+				 * */
+				printProductList(basket, basketCount);
+				//합계 출력
+				int sum = sumProductList(basket,basketCount);
+				//장바구니에 있는 제품을 하나씩 확인하며 가격*수량 누적
+				
+				System.out.println("금액을 입력하세요: ");
+				int buyPrice = scan.nextInt();
+				//결제 진행
+				//금액 부족시 취소 여부 확인
+				if(sum >buyPrice) {
+					System.out.println("결제를 취소하시겠습니까?(취소시 장바구니 비워짐 y or n) ");
+					char cancel = scan.next().charAt(0);
+					if(cancel == 'Y' || cancel == 'y') {
+						//장바구니 물량을 제고량에 돌려줘야 함
+						returnProductList(list, listCount, basket, basketCount);
+						//장바구니 비우기
+						basketCount =0;
+					}
+				}else {
+					//거스름돈 출력
+					System.out.println("거스름돈: "+(buyPrice - sum)+"원");
+					//장바구니 비움
+					basketCount =0;
+				}
+				
 				break;
 			case 5:
 				break;
@@ -66,10 +117,10 @@ public class Ex07_Mart {
 	 * */
 	public static int selectMenu(Scanner scan) {
 		System.out.println("메뉴");
-		System.out.println("1.제품 등록");
-		System.out.println("2.제품 입고");
-		System.out.println("3.제품 선택");
-		System.out.println("4.제품 구매");
+		System.out.println("1.제품 등록(관리자)");
+		System.out.println("2.제품 입고(관리자)");
+		System.out.println("3.제품 선택(고객)");
+		System.out.println("4.제품 구매(고객)");
 		System.out.println("5.프로그램 종료");
 		System.out.print("메뉴를 선택하세요: ");
 		int menu = scan.nextInt();
@@ -85,7 +136,7 @@ public class Ex07_Mart {
 	public static int selectSubMenu(Scanner scan) {
 		System.out.println("1.음료수 등록");
 		System.out.println("2.박스과자 등록");
-		System.out.println("제품 종류 선택: ");
+		System.out.print("제품 종류 선택: ");
 		int subMenu = scan.nextInt();
 		return subMenu;
 		
@@ -96,11 +147,11 @@ public class Ex07_Mart {
 	 * 메소드명: createProduct
 	 * */
 	public static Product createProduct(int subMenu, Scanner scan) {
-		System.out.println("제품명: ");
+		System.out.print("제품명: ");
 		String name = scan.next();
-		System.out.println("가격: ");
+		System.out.print("가격: ");
 		int price = scan.nextInt();
-		System.out.println("수량: ");
+		System.out.print("수량: ");
 		int amount = scan.nextInt();
 		
 		switch(subMenu) {
@@ -128,7 +179,7 @@ public class Ex07_Mart {
 			return;
 		}
 		for(int i=0; i<listCount; i++) {
-			System.out.println(i+1+"."); //선택 용이를 위해 번호 붙임
+			System.out.print(i+1+"."); //선택 용이를 위해 번호 붙임
 			productList[i].print();
 		}
 	}
@@ -151,10 +202,74 @@ public class Ex07_Mart {
 			return false;
 		}
 		//해당 제품의 수량 변경
-		int preAmount = list[num-1].getAmount();
-		list[num].setAmount(preAmount + amount);
+		list[num-1].sumAmount(amount);
 		return true;
 		
+	}
+	/* 가능: 스캐너를 이용해 제품과 수량을 선택하면 제품리스트에서 해당 제품을 꺼내 줌
+	 * 매개변수: Scanner scan, Product list[], int listCount
+	 * 리턴타입: Product
+	 * 메소드명: selectProduct
+	 * */
+	public static Product selectProduct(Scanner scan, Product list[], int listCount) {
+		System.out.print("구매할 제품을 선택하세요: ");
+		int num = scan.nextInt();
+		if(num <listCount) {
+			return null;
+		}
+		System.out.println("구매할 제품의 수량을 입력하세요: ");
+		int amount = scan.nextInt();
+		
+		Product buyProduct = list[num-1] ;
+		Product selectProduct = null;
+		//제품 선택 후 장바구니에 담기
+		if(buyProduct instanceof SnackBox) {
+			selectProduct = new SnackBox((SnackBox)buyProduct);
+		}else if(buyProduct instanceof Drink) {
+			selectProduct = new Drink((Drink)buyProduct);
+		}else {
+			return null;
+		}
+		//제고보다 많은 수량을 입력한 경우
+		if(buyProduct.getAmount() < amount) {
+			//수량을 제고량으로 수정
+			amount = buyProduct.getAmount();
+		}
+		
+		selectProduct.setAmount(amount);
+		buyProduct.sumAmount(-amount);
+		return selectProduct;
+	}
+	/* 기능: 제품 리스트가 주어지면 해당 제품 리스트의 합계를 구해 알려주는 메소드
+	 * 매개변수: Product list[], int listCount
+	 * 리턴타입: int
+	 * 메소드명: sumProductList
+	 * */
+	public static int sumProductList(Product list[], int listCount) {
+		int sum =0;
+		for(int i =0; i <listCount; i++) {
+			sum += list[i].getPirce()*list[i].getAmount();
+		}
+		return sum;
+		
+	}
+	/* 기능: 장바구니에 담은 제품들을 마켓에 돌려주는 메소드
+	 * 매개변수: Product list[], int listCount, Product basket[], int basketCount
+	 * 리턴타입: void
+	 * 메소드명: returnProductList
+	 * */
+	
+	public static void returnProductList(Product list[], int listCount, Product basket[], int basketCount) {
+		if(list == null || basket ==null) {
+			return;
+		}
+		for(int i =0; i <listCount; i++) {
+			for(int j =0; j <basketCount; j++) {
+				if(list[i].getName().equals(basket[j].getName())) {
+					list[i].sumAmount(list[j].getAmount());
+				}
+			}
+		}
 	}
 
 }

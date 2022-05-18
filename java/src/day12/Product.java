@@ -22,6 +22,11 @@ public abstract class Product {
 		this.pirce = pirce;
 	}
 	
+	//수량이 주어지면 기존 수량에 누적하는 메소드
+	public void sumAmount(int amount) {
+		this.amount += amount;
+	}
+	
 	public Product(String name) {
 		this(name, 0, 0);
 	}

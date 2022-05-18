@@ -8,13 +8,16 @@ public class Drink extends Product {
 		super(name, price, amount);
 		this.capacity =capacity;
 	}
+	public Drink(Drink product) {
+		this(product.getName(), product.getPirce(), product.getAmount(), product.getCapacity());
+	}
 
 	@Override
 	public void print() {
 		if(capacity <1000) {
-			System.out.println("]"+capacity+"ml"+getPirce() +"원 - "+getAmount());
+			System.out.println(getName()+"["+capacity+"ml] : "+getPirce() +"원 - "+getAmount());
 		}else {
-			System.out.println("["+capacity/1000.0+"]: "+getPirce() +"원 - "+getAmount());
+			System.out.println(getName()+"["+capacity/1000.0+"l]: "+getPirce() +"원 - "+getAmount());
 		}
 
 	}
