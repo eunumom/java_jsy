@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+    <input type="text" class="bar" readonly>
+    <br>
+    <input type="checkbox" class="fruit" value="banana">바나나
+    <input type="checkbox" class="fruit" value="apple">사과
+    <input type="checkbox" class="fruit" value="orange">오렌지
+    <script>
+        $(function(){
+            $('.fruit').click(function(){
+                if($('.fruit').is(':checked')){
+                   $('input[type="checkbox"][class="fruit"]').prop('checked', false);
+                   $(this).prop('checked', true);
+                   let fruit = $(this).val();
+                   $('.bar').val(fruit);
+                }else{
+                    $('.bar').empty();
+                }
+            })
+
+
+
+
+
+        //   $('.fruit').click(function(){
+        //     if($('.fruit').is(':checked')){ //if($(this).prop('checked'))
+        //         alert($(this).val() + ' 선택');
+        //     }else{
+        //         alert($(this).val() + ' 선택 해제');
+        //     }
+        //   })
+        })
+    </script>
+</body>
+</html>

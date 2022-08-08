@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분할예제</title>
+    <style>
+       body{ margin: 0;}
+		.container{
+			padding: 10px; height: 100vh;  box-sizing: border-box;
+		}
+        .container::after{
+            display: block; content: ''; clear: both;
+        }
+		.left, .right{
+			width: calc((100% - 10px) / 2); height: 100%;
+            background: red; float: left;
+		}
+		.right{
+			margin-left: 10px;
+		}
+        .q{
+            background: blue;
+            width: 100%; height: cal(50%-5px);
+        }
+        .q.down{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="left">
+            <div class="q">q1</div>
+            <div class="q down">q2</div>
+        </div>
+        <!--왼쪽 종료-->
+		<div class="right">
+            <div class="q">q3</div>
+            <div class="q down">q4</div>
+        </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        ul,li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .menu-out .dep1{
+            font-size: 0;
+        }
+        .menu-out .dep1 > li{
+            display: inline-block;
+            width: 100px; background: gray;
+            font-size: 16px; text-align: center;
+        }
+        .menu-out .dep1 > li > a {
+            display: block;
+        }
+        .menu-out .dep2 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-out">
+        <ul class="dep1">
+            <li>
+                <a href="#">menu1</a>
+                <ul class="dep2">
+                    <li><a href="#">menu1-1</a></li>
+                    <li><a href="#">menu1-2</a></li>
+                    <li><a href="#">menu1-3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">menu2</a>
+                <ul class="dep2">
+                    <li><a href="#">menu2-1</a></li>
+                    <li><a href="#">menu2-2</a></li>
+                    <li><a href="#">menu2-3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">menu3</a>
+                <ul class="dep2">
+                    <li><a href="#">menu3-1</a></li>
+                    <li><a href="#">menu3-2</a></li>
+                    <li><a href="#">menu3-3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
